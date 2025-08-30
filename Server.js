@@ -8,7 +8,9 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 dotenv.config();
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: "https://database-agent-coral.vercel.app"
+}));
 app.use(bodyParser.json());
 
 let dbConfig = null;
@@ -166,11 +168,7 @@ app.post("/execute", async (req, res) => {
   }
 });
 
-
-
-app.listen(5000, () => {
-  console.log("🚀 Server running on http://localhost:5000");
-});
+export default app;
 
 
 
